@@ -4,7 +4,7 @@ this is a wrapper around Print() to make fmt usable for Arduino Streams.
 
 ## usage
 
-see [the example](examples/fmttest.cpp) 
+see [the example](src/fmttest.cpp) 
 
 Fmt adds a single method:  `Fmt::fmt(format_string, args..)`
 

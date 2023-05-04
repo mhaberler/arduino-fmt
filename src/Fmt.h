@@ -6,7 +6,7 @@
 #include <fmt/format.h>
 using namespace fmt;
 
-class Fmt : public Print {
+class Fmt : public Stream {
 
 public:
   Fmt(Stream &stream) : stream_(&stream){};
@@ -23,6 +23,9 @@ public:
   size_t write(const uint8_t *buffer, size_t size) {
     return stream_->write(buffer, size);
   };
+  int available() { return 0; };
+  int read() { return 0; };
+  int peek() { return 0; };
 
 private:
   Stream *stream_;

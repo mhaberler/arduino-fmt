@@ -2,6 +2,7 @@
 
 #include <Stream.h>
 #undef B1
+#undef F
 #include <fmt/core.h>
 #include <fmt/format.h>
 using namespace fmt;

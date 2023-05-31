@@ -3,8 +3,10 @@
 #include <Stream.h>
 #undef B1
 #undef F
+#include <StreamUtils.h>
 #include <fmt/core.h>
 #include <fmt/format.h>
+
 using namespace fmt;
 
 class Fmt : public Stream {
@@ -12,7 +14,15 @@ class Fmt : public Stream {
 public:
   Fmt(Stream &stream, String eol = "\n") : eol_(eol), stream_(&stream){};
   Fmt(Stream *stream, String eol = "\n") : eol_(eol), stream_(stream){};
-
+  Fmt(String eol = "\n") : eol_(eol) {
+    stream_ = new StringStream();
+    allocated_ = true;
+  };
+  ~Fmt() {
+    if (allocated_) {
+      delete stream_;
+    }
+  }
   template <typename... T>
   FMT_NODISCARD FMT_INLINE int fmt(format_string<T...> fmt, T &&...args) {
     std::string s = vformat(fmt, fmt::make_format_args(args...));
@@ -42,8 +52,11 @@ public:
   int read() { return 0; };
   int peek() { return 0; };
 
+  Stream &stream(void) {return *stream_;};
+
 private:
   // const std::locale &locale_ = std::locale("en_US.UTF-8");
   String eol_;
   Stream *stream_;
+  bool allocated_;
 };

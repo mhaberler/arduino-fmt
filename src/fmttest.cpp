@@ -15,6 +15,7 @@ void fmtlib_error(const char *file, int line, const char *message) {
 }
 
 void setup() {
+  delay(3000);
   Serial.begin(115200);
   while (!Serial) {
     yield();

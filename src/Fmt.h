@@ -3,6 +3,9 @@
 #include <Stream.h>
 #undef B1
 #undef F
+#ifndef FMT_NODISCARD
+#define FMT_NODISCARD
+#endif
 #include <StreamUtils.h>
 #include <fmt/core.h>
 #include <fmt/format.h>

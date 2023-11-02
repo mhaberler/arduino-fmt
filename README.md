@@ -6,7 +6,15 @@ this is a wrapper around Print() to make fmt usable for Arduino Streams.
 
 see [the example](src/fmttest.cpp) 
 
-Fmt adds a single method:  `Fmt::fmt(format_string, args..)`
+Instantiation:
+
+`Fmt::Fmt(Print)`
+`Fmt::Fmt(Print, "\r\n")` - custom end-of-line sequence
+
+Fmt adds:
+
+-  `Fmt::fmt(format_string, args..)`
+-  `Fmt::fmtln(format_string, args..)`
 
 ## example:
 

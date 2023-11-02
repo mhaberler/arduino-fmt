@@ -40,6 +40,9 @@ void setup() {
              "Hello, {}!\n", "мир");
   fmt::print(fg(fmt::color::steel_blue) | fmt::emphasis::italic, "Hello, {}!\n",
              "世界");
+
+  f.printf("f.printf %f %s\n", 3.14, "foo");
+
 }
 
 void loop() { yield(); }

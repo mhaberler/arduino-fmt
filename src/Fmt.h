@@ -40,12 +40,6 @@ public:
     return l;
   }
 
-  template <typename... T>
-  FMT_NODISCARD FMT_INLINE int printf(format_string<T...> fmt, T &&...args) {
-    std::string s = vformat(fmt, fmt::make_format_args(args...));
-    return write((const uint8_t *)s.c_str(), s.length());
-  }
-
   size_t write(uint8_t c) { return stream_->write(c); };
 
   size_t write(const uint8_t *buffer, size_t size) {
